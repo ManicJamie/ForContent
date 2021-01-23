@@ -15,13 +15,17 @@ namespace ForContent
 
         public override string GetVersion() => "1.0";
 
+        // Hook to GetPlayerBoolHook
         public override void Initialize()
         {
+            Log("Disabling Isma's and Lantern...");
             ModHooks.Instance.GetPlayerBoolHook += PlayerBoolGet;
         }
 
+        // Unhook from GetPlayerBoolHook
         public void Unload()
         {
+            Log("Allowing Isma's and Lantern...");
             ModHooks.Instance.GetPlayerBoolHook -= PlayerBoolGet;
         }
 
